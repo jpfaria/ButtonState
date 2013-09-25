@@ -9,9 +9,10 @@ ButtonState::ButtonState(int pin)
   _lastState = HIGH;
   _startHold = 0;
   _allow = false;
+  _dSwitch = -1;
 }
 
-void ButtonState::observer()
+void ButtonState::observer() 
 {
   _state = digitalRead(_pin);
 
@@ -23,11 +24,25 @@ void ButtonState::observer()
   if (_allow == true && _state == LOW && _lastState == LOW){
     if ((millis() - _startHold) >= 20){
       Serial.println(_pin);
-      //rlyState = !rlyState;
       _allow = false;
+      if (_dSwitch>-1) {
+	digitalWrite(_dSwitch, !digitalRead(_dSwitch));
+      }
+      if (_call) {
+	_call();
+      }
     }
   } 
-
   _lastState = _state;
   
 }
+
+void ButtonState::whenPressedCall(void (*callType)())
+{
+  _call = &(*callType);
+}
+
+void ButtonState::whenPressedDigitalSwitch(int pin)
+{
+  _dSwitch = pin;
+}  
