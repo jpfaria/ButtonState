@@ -11,6 +11,8 @@ ButtonState::ButtonState(int pin)
   _holdDelay = 20;
   _allow = false;
   _dSwitch = -1;
+  _aWritePin = -1;
+  _aWriteValue = -1;
 }
 
 void ButtonState::observer() 
@@ -27,15 +29,18 @@ void ButtonState::observer()
       Serial.println(_pin);
       _allow = false;
       if (_dSwitch>-1) {
-	digitalWrite(_dSwitch, !digitalRead(_dSwitch));
+        digitalWrite(_dSwitch, !digitalRead(_dSwitch));
       }
       if (_call) {
-	_call();
+        _call();
+      }
+      if (_aWritePin>-1 && _aWriteValue>-1) {
+    	analogWrite(_aWritePin, _aWriteValue);
       }
     }
   } 
+
   _lastState = _state;
-  
 }
 
 void ButtonState::whenPressedCall(void (*callback)())
@@ -46,7 +51,13 @@ void ButtonState::whenPressedCall(void (*callback)())
 void ButtonState::whenPressedDigitalSwitch(int pin)
 {
   _dSwitch = pin;
-}  
+}
+
+void ButtonState::whenPressedAnalogWrite(int pin, int value)
+{
+  _aWritePin = pin;
+  _aWriteValue = value;
+}
 
 void ButtonState::setHoldDelay(long delay)
 {

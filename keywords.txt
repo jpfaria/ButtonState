@@ -2,4 +2,5 @@ ButtonState	KEYWORD1
 observer	KEYWORD2
 whenPressedCall	KEYWORD2
 whenPressedDigitalSwitch	KEYWORD2
+whenPressedAnalogWrite	KEYWORD2
 setHoldDelay	KEYWORD2

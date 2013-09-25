@@ -11,6 +11,7 @@ class ButtonState
     void observer();
     void whenPressedCall(void (*callback)());
     void whenPressedDigitalSwitch(int pin);
+    void whenPressedAnalogWrite(int pin, int value);
     void setHoldDelay(long delay);
   private:
     int _pin;
@@ -20,6 +21,8 @@ class ButtonState
     long _holdDelay;
     bool _allow;
     int _dSwitch;
+    int _aWritePin;
+    int _aWriteValue;
     callback _call;
 };
 
