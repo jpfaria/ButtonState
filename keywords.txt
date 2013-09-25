@@ -1,0 +1,5 @@
+ButtonState	KEYWORD1
+observer	KEYWORD2
+whenPressedCall	KEYWORD2
+whenPressedDigitalSwitch	KEYWORD2
+setHoldDelay	KEYWORD2
