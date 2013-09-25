@@ -38,9 +38,9 @@ void ButtonState::observer()
   
 }
 
-void ButtonState::whenPressedCall(void (*callType)())
+void ButtonState::whenPressedCall(void (*callback)())
 {
-  _call = &(*callType);
+  _call = &(*callback);
 }
 
 void ButtonState::whenPressedDigitalSwitch(int pin)
