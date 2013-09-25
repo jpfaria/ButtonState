@@ -20,7 +20,7 @@ class ButtonState
     long _holdDelay;
     bool _allow;
     int _dSwitch;
-    callType _call;
+    callback _call;
 };
 
 #endif
