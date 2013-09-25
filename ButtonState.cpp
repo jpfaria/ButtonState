@@ -8,6 +8,7 @@ ButtonState::ButtonState(int pin)
   _state = HIGH;
   _lastState = HIGH;
   _startHold = 0;
+  _holdDelay = 20;
   _allow = false;
   _dSwitch = -1;
 }
@@ -22,7 +23,7 @@ void ButtonState::observer()
   }
 
   if (_allow == true && _state == LOW && _lastState == LOW){
-    if ((millis() - _startHold) >= 20){
+    if ((millis() - _startHold) >= _holdDelay){
       Serial.println(_pin);
       _allow = false;
       if (_dSwitch>-1) {
@@ -46,3 +47,8 @@ void ButtonState::whenPressedDigitalSwitch(int pin)
 {
   _dSwitch = pin;
 }  
+
+void ButtonState::setHoldDelay(long delay)
+{
+  _holdDelay = delay;
+} 

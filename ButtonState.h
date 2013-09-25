@@ -11,11 +11,13 @@ class ButtonState
     void observer();
     void whenPressedCall(void (*callType)());
     void whenPressedDigitalSwitch(int pin);
+    void setHoldDelay(long delay);
   private:
     int _pin;
     int _state;
     int _lastState;
     long _startHold;
+    long _holdDelay;
     bool _allow;
     int _dSwitch;
     callType _call;
