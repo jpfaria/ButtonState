@@ -9,10 +9,10 @@ class ButtonState
     ButtonState(int pin);
     typedef void (*callback)();
     void observer();
-    void whenPressedCall(void (*callback)());
-    void whenPressedDigitalSwitch(int pin);
-    void whenPressedAnalogWrite(int pin, int value);
-    void setHoldDelay(long delay);
+    void call(void (*callback)());
+    void digitalSwitch(int pin);
+    void analogWrite(int pin, int value);
+    void holdDelay(long delay);
   private:
     int _pin;
     int _state;

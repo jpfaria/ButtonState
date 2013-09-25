@@ -43,23 +43,23 @@ void ButtonState::observer()
   _lastState = _state;
 }
 
-void ButtonState::whenPressedCall(void (*callback)())
+void ButtonState::call(void (*callback)())
 {
   _call = &(*callback);
 }
 
-void ButtonState::whenPressedDigitalSwitch(int pin)
+void ButtonState::digitalSwitch(int pin)
 {
   _dSwitch = pin;
 }
 
-void ButtonState::whenPressedAnalogWrite(int pin, int value)
+void ButtonState::analogWrite(int pin, int value)
 {
   _aWritePin = pin;
   _aWriteValue = value;
 }
 
-void ButtonState::setHoldDelay(long delay)
+void ButtonState::holdDelay(long delay)
 {
   _holdDelay = delay;
 } 
