@@ -7,9 +7,9 @@ class ButtonState
 {
   public:
     ButtonState(int pin);
-    typedef void (*callType)();
+    typedef void (*callback)();
     void observer();
-    void whenPressedCall(void (*callType)());
+    void whenPressedCall(void (*callback)());
     void whenPressedDigitalSwitch(int pin);
     void setHoldDelay(long delay);
   private:
