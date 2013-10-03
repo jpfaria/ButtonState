@@ -35,7 +35,7 @@ void ButtonState::observer()
         _call();
       }
       if (_aWritePin>-1 && _aWriteValue>-1) {
-    	analogWrite(_aWritePin, _aWriteValue);
+        analogWrite(_aWritePin, _aWriteValue);
       }
     }
   } 
